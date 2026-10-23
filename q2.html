@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q2 - Smart Number Validator</title>
+</head>
+<body>
+    <label for="userInput">Enter a number:</label>
+    <input type="text" id="userInput" placeholder="Enter a number">
+    <button id="checkBtn" type="button">Check</button>
+    <p id="result" role="status" aria-live="polite"></p>
+
+    <br>
+    <a href="q1.html">Q1</a>
+    <a href="q3.html">Q3</a>
+
+    <script>
+        // 1. Select the elements
+        const userInput = document.getElementById("userInput");
+        const checkBtn = document.getElementById("checkBtn");
+        const result = document.getElementById("result");
+
+        // 2. Validation function
+        function checkInput() {
+            const text = userInput.value.trim();
+
+            if (text === "") {
+                result.textContent = "Please enter a valid number!";
+                return;
+            }
+
+            const number = Number(text);
+
+            if (!Number.isFinite(number)) {
+                result.textContent = "Please enter a valid number!";
+            } else if (number < 10) {
+                result.textContent = "The number is lower than 10";
+            } else if (number > 10) {
+                result.textContent = "The number is higher than 10";
+            } else {
+                result.textContent = "The number is equal to 10";
+            }
+        }
+
+        // 3. Run the function when the button is clicked
+        checkBtn.addEventListener("click", checkInput);
+    </script>
+</body>
+</html>
